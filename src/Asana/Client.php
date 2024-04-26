@@ -105,6 +105,10 @@ class Client
                 if (!array_key_exists('headers', $options)) {
                     $options['headers'] = array();
                 }
+                
+                // Opting out of "new_goal_memberships"
+                $options['headers']['Asana-Disable'] = 'new_goal_memberships,new_user_task_lists';
+
                 $this->logAsanaChangeHeaders($options['headers'], $response->headers->toArray());
 
                 Errors\AsanaError::handleErrorResponse($response);
